@@ -16,6 +16,7 @@ const data = await res.json();
 };
 
 const Books = async () => {
+  
   const booksData = await getBooks();
 
   return (
@@ -99,56 +100,3 @@ const Books = async () => {
 
 
 
-
-const MOCK_WORKOUTS = [
-  {
-    _id: "1",
-    title: "BENCH PRESS",
-    equipment: "Barbell",
-    duration: 15,
-    calories: 120,
-    rating: "4.8",
-    image: "/placeholder.png"
-  },
-  {
-    _id: "2",
-    title: "SQUATS",
-    equipment: "Barbell",
-    duration: 20,
-    calories: 180,
-    rating: "4.9",
-    image: "/placeholder.png"
-  },
-  {
-    _id: "3",
-    title: "DEADLIFT",
-    equipment: "Barbell",
-    duration: 25,
-    calories: 220,
-    rating: "5.0",
-    image: "/placeholder.png"
-  }
-];
-
-// Inside your data fetching function:
-async function getWorkouts() {
-  try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
-      cache: "no-store",
-    });
-
-    if (!res.ok) return MOCK_WORKOUTS;
-
-    const contentType = res.headers.get("content-type");
-    if (!contentType || !contentType.includes("application/json")) {
-      return MOCK_WORKOUTS;
-    }
-
-    const data = await res.json();
-    return Array.isArray(data) && data.length > 0 ? data : MOCK_WORKOUTS;
-  } catch (error) {
-    return MOCK_WORKOUTS;
-  }
-}
-
-export default Books;

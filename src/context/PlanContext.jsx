@@ -14,7 +14,6 @@ export function PlanProvider({ children }) {
     setToast({ message, type });
     setTimeout(() => setToast(null), 3000);
   };
-
   useEffect(() => {
     try {
       const savedPlan = JSON.parse(localStorage.getItem('my_plan') || '[]');
