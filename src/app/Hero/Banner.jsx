@@ -33,7 +33,6 @@ const Home = () => {
             height={400}
             alt="Fitman lifting weights"
             
-            
           />
         </div>
 
