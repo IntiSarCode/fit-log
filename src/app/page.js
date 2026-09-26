@@ -4,6 +4,7 @@ import Books from './Home/Homepage';
 import Footer from './components/Footer';
 
 
+
 const Navbar = () => {
   return (
     <div>
@@ -13,6 +14,8 @@ const Navbar = () => {
       </div>
       <page/> 
       <Footer />
+
+  
       
       
    </div>
