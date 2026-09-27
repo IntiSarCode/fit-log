@@ -13,7 +13,7 @@ const Navbar = () => {
         <Books/>
       </div>
       <page/> 
-      <Footer />
+      
 
   
       
