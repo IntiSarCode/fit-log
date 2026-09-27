@@ -14,7 +14,7 @@ export default function WorkoutDetailsPage({ params }) {
   const [workout, setWorkout] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Hook from your PlanContext
+ 
   const { addToPlan, saveForLater } = usePlan();
 
   useEffect(() => {
@@ -46,7 +46,9 @@ export default function WorkoutDetailsPage({ params }) {
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       <div className="card lg:card-side bg-base-100 shadow-xl gap-6 items-start p-6">
-        {/* Left Side: Image */}
+     
+        
+
         <figure className="lg:w-1/2 w-full">
           <Image
             src={workout.image || workout.img}
@@ -57,7 +59,7 @@ export default function WorkoutDetailsPage({ params }) {
           />
         </figure>
 
-        {/* Right Side: Details & Actions */}
+        
         <div className="lg:w-1/2 w-full flex flex-col gap-4">
           <div>
             <h2 className="text-3xl font-bold uppercase text-white">
@@ -68,7 +70,7 @@ export default function WorkoutDetailsPage({ params }) {
             </p>
           </div>
 
-          {/* Stats Box */}
+         
           <div className="bg-base-200 p-4 rounded-xl space-y-2 text-sm">
             {workout.equipment && (
               <div className="flex justify-between">
@@ -128,7 +130,7 @@ export default function WorkoutDetailsPage({ params }) {
             )}
           </div>
 
-          {/* Instructions */}
+         
           {workout.instructions && (
             <div>
               <h3 className="font-bold uppercase text-base text-white mb-2">
@@ -146,7 +148,7 @@ export default function WorkoutDetailsPage({ params }) {
             </div>
           )}
 
-          {/* Action Buttons connected to PlanContext */}
+          
           <div className="flex gap-3 pt-2">
             <button
               onClick={() => addToPlan(workout)}

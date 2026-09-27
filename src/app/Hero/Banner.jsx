@@ -39,25 +39,7 @@ const Home = () => {
       </div>
 
     </section>
-
-
-
-    // <section className=" py-20">
-    //     <div className="container mx-auto grid grid-cols-2 gap-4 items-center bg-base-200 rounded-4xl p-4">
-    //         <div className="space-y-4">
-    //                 <h2 className="text-5xl font-bold">
-    //                     TRAIN WITH INTENT. LOG EVERY SET.</h2>
-    //         </div>
-    //         <p>FitLog is a dark, no-nonsense gym companion: pick a lift,<br /> lock it into today's plan, and watch the week's work add<br /> up.</p>
-    //         <button className="btn btn-success">Browse Workouts</button>
-    //         <Image
-    //             src="/assets/banner.png"
-    //             width={400}
-    //             height={400}
-    //             alt="Fitman lifting weights"
-    //         />
-    //     </div>
-    // </section>       
+   
     );
 };
 

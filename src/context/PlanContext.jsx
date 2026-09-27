@@ -91,8 +91,7 @@ export function PlanProvider({ children }) {
       }}
     >
       {children}
-
-      {/* Toast Notification Top Right */}
+      
       {toast && (
         <div className="toast toast-top toast-end z-50 mt-14">
           <div

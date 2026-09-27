@@ -1,88 +1,4 @@
 
-// import Image from 'next/image';
-
-// const getWorkoutDetails = async (id) => {
-//   try {
-//     const res = await fetch('https://api.abcz.workers.dev/api/fitlog', {
-//       cache: 'no-store',
-//     });
-
-//     if (!res.ok) {
-//       console.error('API Error:', res.status);
-//       return null;
-//     }
-
-//     const contentType = res.headers.get('content-type');
-//     if (!contentType || !contentType.includes('application/json')) {
-//       console.error('API did not return valid JSON');
-//       return null;
-//     }
-
-//     const list = await res.json();
-//     return list.find((item) => String(item._id || item.id) === String(id));
-//   } catch (err) {
-//     console.error('Fetch failed:', err);
-//     return null;
-//   }
-// };
-
-// export default async function WorkoutDetailsPage({ params }) {
-//   const resolvedParams = await params;
-//   const workout = await getWorkoutDetails(resolvedParams?.id);
-
-//   if (!workout) {
-//     return (
-//       <div className="container mx-auto p-10 text-center text-white">
-//         <h2 className="text-2xl font-bold">Workout Not Found</h2>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className="container mx-auto p-4 max-w-6xl">
-//       <div className="card lg:card-side bg-base-100 shadow-xl gap-6 items-start p-6">
-//         <figure className="lg:w-1/2 w-full">
-//           <Image
-//             src={workout.image || workout.img || '/placeholder.png'}
-//             alt={workout.name || workout.title || 'Workout'}
-//             width={600}
-//             height={600}
-//             className="w-full h-auto object-cover rounded-2xl"
-//           />
-//         </figure>
-
-//         <div className="lg:w-1/2 w-full flex flex-col gap-4">
-//           <div>
-//             <h2 className="text-3xl font-bold uppercase text-white">
-//               {workout.name || workout.title}
-//             </h2>
-//             <p className="text-gray-400 mt-1 text-sm leading-relaxed">
-//               {workout.description}
-//             </p>
-//           </div>
-
-//           <div className="bg-base-200 p-4 rounded-xl space-y-2 text-sm">
-//             {workout.equipment && (
-//               <div className="flex justify-between">
-//                 <span className="font-semibold uppercase text-gray-400">Equipment</span>
-//                 <span className="text-white">{workout.equipment}</span>
-//               </div>
-//             )}
-//             {workout.difficulty && (
-//               <div className="flex justify-between">
-//                 <span className="font-semibold uppercase text-gray-400">Difficulty</span>
-//                 <span className="text-white">{workout.difficulty}</span>
-//               </div>
-//             )}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
 'use client';
 
 import React, { useState } from 'react';
@@ -97,7 +13,7 @@ export default function MyPlanPage() {
 
   const rawList = activeTab === 'today' ? planItems : savedItems;
 
-  // Extract clean number from string (e.g. "15 min" -> 15, "120 kcal" -> 120)
+ 
   const parseNumber = (val) => {
     if (!val) return 0;
     if (typeof val === 'number') return val;
@@ -105,7 +21,7 @@ export default function MyPlanPage() {
     return match ? parseInt(match[0], 10) : 0;
   };
 
-  // Stat calculations
+
   const totalExercises = rawList.length;
   const totalMinutes = rawList.reduce(
     (sum, item) => sum + parseNumber(item.duration || item.time || item.minutes),
@@ -116,7 +32,7 @@ export default function MyPlanPage() {
     0
   );
 
-  // Sorting logic
+ 
   const currentList = [...rawList].sort((a, b) => {
     if (sortBy === 'Duration') {
       return (
@@ -130,7 +46,7 @@ export default function MyPlanPage() {
 
   return (
     <div className="container mx-auto p-6 max-w-5xl text-white min-h-screen">
-      {/* Header */}
+    
       <div className="mb-6">
         <h1 className="text-3xl font-extrabold uppercase tracking-wide">
           MY PLAN
@@ -140,7 +56,7 @@ export default function MyPlanPage() {
         </p>
       </div>
 
-      {/* Metrics Summary Row (3 Stat Cards) */}
+   
       <div className="bg-[#121418] border border-gray-800 rounded-2xl p-6 mb-8 grid grid-cols-3 text-left">
         <div>
           <p className="text-gray-400 text-xs font-semibold uppercase">
@@ -164,9 +80,9 @@ export default function MyPlanPage() {
         </div>
       </div>
 
-      {/* Controls Row */}
+     
       <div className="flex justify-between items-center mb-6">
-        {/* Tabs */}
+      
         <div className="bg-[#121418] p-1 rounded-xl flex gap-1 border border-gray-800">
           <button
             onClick={() => setActiveTab('today')}
@@ -190,7 +106,7 @@ export default function MyPlanPage() {
           </button>
         </div>
 
-        {/* Sort By Dropdown */}
+       
         <div className="flex items-center gap-3">
           <span className="text-xs text-gray-400 font-semibold uppercase">
             Sort By
@@ -206,13 +122,14 @@ export default function MyPlanPage() {
         </div>
       </div>
 
-      {/* Loading State */}
       {loading ? (
         <div className="text-center py-20 text-gray-400">
           <p className="text-lg">Loading workouts...</p>
         </div>
       ) : currentList.length === 0 ? (
-        /* Empty State */
+        
+
+        
         <div className="bg-[#121418]/60 border border-gray-800 rounded-2xl py-20 text-center space-y-3">
           <h2 className="text-2xl font-black uppercase tracking-wide">
             NOTHING HERE YET
@@ -228,7 +145,7 @@ export default function MyPlanPage() {
           </Link>
         </div>
       ) : (
-        /* Workout Cards List (Horizontal Row Format matching live site) */
+     
         <div className="flex flex-col gap-4">
           {currentList.map((workout, index) => {
             const workoutId = workout._id || workout.id || index;
@@ -243,7 +160,7 @@ export default function MyPlanPage() {
                 key={`${workoutId}-${index}`}
                 className="bg-[#121418] border border-gray-800 rounded-2xl p-4 flex items-center justify-between gap-4"
               >
-                {/* Left: Thumbnail & Info */}
+              
                 <div className="flex items-center gap-4">
                   <div className="relative w-32 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-800">
                     <Image
@@ -260,7 +177,7 @@ export default function MyPlanPage() {
                     </h3>
                     <p className="text-xs text-gray-400">{equipment}</p>
 
-                    {/* Stats Row */}
+                   
                     <div className="flex items-center gap-3 text-xs text-gray-300 pt-1">
                       <span className="flex items-center gap-1">
                         ⏱ {parseNumber(duration)} min
@@ -275,7 +192,7 @@ export default function MyPlanPage() {
                   </div>
                 </div>
 
-                {/* Right: Actions */}
+             
                 <div className="flex items-center gap-3">
                   <Link
                     href={`/workouts/${workoutId}`}
